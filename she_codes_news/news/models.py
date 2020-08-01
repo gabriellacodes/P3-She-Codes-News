@@ -8,7 +8,7 @@ class NewsStory(models.Model):
     author = models.CharField(max_length=200)
     pub_date = models.DateTimeField()
     content = models.TextField()
-    image_url = models.CharField(max_length=400)
+    image_url = models.URLField(max_length=400)
     # gets rid of time stamp on entry
     # def date_published(self):
     #     return self.pub_date.strftime('%B %d %Y')
