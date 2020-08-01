@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <a href="{% url 'news:newsStory' %}">Write New Story</a>
+    
+    <h2>Latest News</h2>
+
+    <div id="latest-stories">
+        {% if latest_stories %}
+            {% for story in latest_stories %}
+                <p>{% include "./storyCard.html" with story=story position=forloop.counter %}</p>
+            {% endfor %}
+        {% else %}
+            <p>No stories are available.</p>
+        {% endif %}
+    </div>
+
+    <div id="all-stories">
+        {% if latest_stories %}
+            {% for story in all_stories %}
+                <p>{% include "./storyCard.html" with story=story %}</p>
+            {% endfor %}
+        {% else %}
+            <p>No stories are available.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
