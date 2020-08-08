@@ -2,10 +2,11 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # good shit https://ccbv.co.uk
 
-class AddStoryView(generic.CreateView):
+class AddStoryView(LoginRequiredMixin, generic.CreateView):
     form_class = StoryForm
     context_object_name = 'storyForm'
     template_name = 'news/createStory.html'

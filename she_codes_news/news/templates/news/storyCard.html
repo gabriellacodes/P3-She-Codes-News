@@ -1,9 +1,9 @@
 <div class="story-card" id="story-card-{{ position }}">
     <a href="{% url 'news:story' story.id %}">
-        {% if position < 5 %}
-            <img src="../static/news/images/placeholder-{{ position }}.jpg">
+        {% if not story.image_url %}
+            <img src="https://i.guim.co.uk/img/media/70c92227c0a9c4896a106aec5e9f09f9949ac749/0_46_4345_2607/master/4345.jpg?width=445&quality=45&auto=format&fit=max&dpr=2&s=193bd3c94632816f38892a4e86043a32">
         {% else %}
-            <img src="https://picsum.photos/600">
+            <img src="{{ story.image_url}}">
         {% endif %}
         <div class="story-card-text">
             <h3>{{ story.title }}</h3>
